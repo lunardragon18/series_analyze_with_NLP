@@ -12,6 +12,7 @@ class BlogSpider(scrapy.Spider):
             yield extracted_data
         for next_page in response.css('a.mw-nextlink'):
             yield response.follow(next_page,self.parse)
+            
     def parse_jutsu(self,response):
         jutsu_name = response.css('span.mw-page-title-main::text').extract()[0]
         jutsu_name = jutsu_name.strip()
@@ -39,7 +40,7 @@ class BlogSpider(scrapy.Spider):
             jutsu_description = jutsu_description
         )
 
-from scrapy.crawler import CrawlerProcess# Run the spider
+from scrapy.crawler import CrawlerProcess
 process = CrawlerProcess(settings={
     "FEEDS": {
         "output.jsonl": {"format": "jsonlines", "overwrite": True},
