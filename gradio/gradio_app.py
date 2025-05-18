@@ -1,5 +1,7 @@
 import gradio as gr
-
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from theme_classifier.theme import Theme
 
@@ -32,7 +34,7 @@ def main():
 
 
 
-    demo.launch()
+    demo.launch(share = True)
 
 if __name__ ==  "__main__":
     main()
