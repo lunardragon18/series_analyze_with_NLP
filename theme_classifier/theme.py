@@ -1,12 +1,15 @@
 import pandas as pd
 from transformers import pipeline
 import huggingface_hub
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utils.utils import load_dataset
 import nltk
 import numpy as np
 from nltk import sent_tokenize
 import torch
-import os
+
 nltk.download('punkt')
 nltk.download('punkt_tab')
 
