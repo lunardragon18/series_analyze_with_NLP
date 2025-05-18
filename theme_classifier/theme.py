@@ -34,7 +34,7 @@ class Theme:
             sentences.append(line)
         model = self.theme_classifier
         outputs = model(
-            sentences[:2],
+            sentences,
             self.theme_list,
             multi_label=True
         )
@@ -53,7 +53,6 @@ class Theme:
             df = pd.read_csv(save_path)
             return df
         df = load_dataset(dataset_path)
-        df = df.head(2)
         themes = df["script"].apply(self.get_theme_scores)
         themes_df = pd.DataFrame(themes.tolist())
         df[themes_df.columns] = themes_df
